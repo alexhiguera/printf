@@ -6,7 +6,7 @@
 /*   By: ahiguera <ahiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:30:26 by ahiguera          #+#    #+#             */
-/*   Updated: 2023/11/07 19:31:21 by ahiguera         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:03:27 by ahiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,4 @@ int	to_base(int n, char *base)
 		i = to_base((n / lenbase), base);
 	i += ft_putchar(base[n % lenbase]);
 	return (i);
-}
-
-int	main(void)
-{
-	to_base(155, HEXADECIMAL_UP);
-	return (0);
 }
