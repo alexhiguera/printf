@@ -1,44 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   to_base.c                                          :+:      :+:    :+:   */
+/*   write.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahiguera <ahiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 16:30:26 by ahiguera          #+#    #+#             */
-/*   Updated: 2023/11/07 20:03:27 by ahiguera         ###   ########.fr       */
+/*   Created: 2023/11/08 18:55:56 by ahiguera          #+#    #+#             */
+/*   Updated: 2023/11/08 18:56:12 by ahiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	ft_strlen(char *len)
+void	pf_betterwrite(void *buf, size_t len, int *result)
 {
-	size_t	i;
+	ssize_t	w;
 
-	i = 0;
-	while (len[i])
-		i++;
-	return (i);
-}
-
-int	to_base(int n, char *base)
-{
-	int		i;
-	int		lenbase;
-
-	i = 0;
-	lenbase = ft_strlen(base);
-	if (n == 0)
-		return (0);
-	if (n < 0)
-	{
-		n *= (-1);
-		i++;
-		ft_putchar('-');
-	}
-	if (n >= lenbase)
-		i = to_base((n / lenbase), base);
-	i += ft_putchar(base[n % lenbase]);
-	return (i);
+	if (*result == -1)
+		return ;
+	w = write(STDOUT_FILENO, buf, len);
+	if (w == -1)
+		*result = -1;
+	else
+		*result += w;
 }
