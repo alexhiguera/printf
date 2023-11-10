@@ -1,5 +1,6 @@
-.vscode
 .DS_Store
-
-*.out
+output
+a.out
+.vscode
 *.a
+*.o
