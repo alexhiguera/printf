@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   puts.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahiguera <ahiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: columbux <columbux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:53:18 by ahiguera          #+#    #+#             */
-/*   Updated: 2023/11/08 19:09:47 by ahiguera         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:15:35 by columbux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	pf_putchar(char c, int *result)
-{
-	pf_betterwrite(&c, 1, result);
-}
-
-void	pf_putstr(char *str, int *result)
-{
-	if (str == NULL)
-		return (pf_putstr(NULL_STR, result));
-	pf_betterwrite(str, pf_strlen(str), result);
-}
 
 void	pf_putbase(unsigned long n, char *base, int *result)
 {
@@ -49,4 +37,15 @@ void	pf_putpointer(void *ptr, int *result)
 {
 	pf_putstr(PTR_PREFIX, result);
 	pf_putbase((unsigned long)ptr, HEXADECIMAL_LO, result);
+}
+
+void	pf_putuntilpercent(char *str, size_t *i, int *result)
+{
+	size_t	j;
+
+	j = 0;
+	while (str[*i + j] != '\0' && str[*i + j] != '%')
+		j++;
+	pf_betterwrite(&str[*i], j, result);
+	*i += j;
 }

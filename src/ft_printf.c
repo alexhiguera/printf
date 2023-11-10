@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahiguera <ahiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: columbux <columbux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:53:36 by ahiguera          #+#    #+#             */
-/*   Updated: 2023/11/08 19:09:49 by ahiguera         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:13:05 by columbux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	pf_putformat(char *str, size_t *i, int *result, va_list src)
+
+static void	pf_putformat(char *str, size_t *i, int *result, va_list src)
 {
 	if (str[*i + 1] == 'c')
 		pf_putchar((char)va_arg(src, int), result);
@@ -37,17 +38,6 @@ void	pf_putformat(char *str, size_t *i, int *result, va_list src)
 	*i += 1;
 	if (str[*i] != '\0')
 		*i += 1;
-}
-
-void	pf_putuntilpercent(char *str, size_t *i, int *result)
-{
-	size_t	j;
-
-	j = 0;
-	while (str[*i + j] != '\0' && str[*i + j] != '%')
-		j++;
-	pf_betterwrite(&str[*i], j, result);
-	*i += j;
 }
 
 int	ft_printf(char const *h, ...)
