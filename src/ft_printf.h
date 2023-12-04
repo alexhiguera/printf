@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: columbux <columbux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahiguera <ahiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:57:13 by ahiguera          #+#    #+#             */
-/*   Updated: 2023/11/09 20:15:47 by columbux         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:03:49 by ahiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
-
 
 # define DECIMAL		"0123456789"
 # define HEXADECIMAL_UP "0123456789ABCDEF"
