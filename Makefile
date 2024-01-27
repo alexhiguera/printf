@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahiguera <ahiguera@student.42.fr>          +#+  +:+       +#+         #
+#    By: columbux <columbux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 18:18:17 by ahiguera          #+#    #+#              #
-#    Updated: 2023/11/10 23:57:03 by ahiguera         ###   ########.fr        #
+#    Updated: 2024/01/27 01:20:39 by columbux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,24 +14,28 @@ NAME	= libftprintf.a
 
 CFLAGS	= -c -Wall -Wextra -Werror
 
-SRC		= ft_printf.c puts.c write.c \
+SRC		=	./src/ft_printf.c			\
+			./src/puts.c				\
+			./src/write.c				\
 
 OBJ		= $(SRC:.c=.o)
 
+all:		$(NAME)
 
-all: $(NAME)
+$(NAME): 	$(OBJ)
+					@echo "\033[32m *** Compiling dependencies... ***"
+					@ar -rcs $(NAME) $(OBJ)
+					@echo "\033[36m ft_printf Compiled! o.o\n"
 
-$(NAME): $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
-
-$(OBJ): $(SRC)
-	gcc $(CFLAGS) $(SRC)
+%.o: %.c
+					@gcc $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+					@rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+					@rm -f $(NAME)
+					@echo "\n\033[35m Deleting EVERYTHING! (-_-)\n"
 
 re: fclean all
 
